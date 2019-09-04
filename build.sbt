@@ -7,6 +7,10 @@ enablePlugins(GitVersioning)
 lazy val tinkerpop3 = project.in(file("tinkerpop3"))
 lazy val traversals = project.in(file("traversals")).dependsOn(tinkerpop3) //TODO factor out `core` from tinkerpop3
 
+ThisBuild/scalacOptions ++= Seq("-deprecation", "-feature", "-language:implicitConversions")
+ThisBuild/Test/compile/javacOptions ++= Seq("-g")
+ThisBuild/Test/fork := true
+
 ThisBuild/resolvers ++= Seq(Resolver.mavenLocal,
                             "Sonatype OSS" at "https://oss.sonatype.org/content/repositories/public")
 
